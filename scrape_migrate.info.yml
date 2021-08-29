@@ -1,0 +1,9 @@
+name: 'Scrape Migrate'
+type: module
+description: 'Migrate scrapped data'
+core_version_requirement: ^8 || ^9
+package: 'Scrape Migrate'
+dependencies:
+  - migrate_plus
+  - migrate_tools
+  - migrate_source_csv

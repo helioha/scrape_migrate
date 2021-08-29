@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Removes stale migration configs during uninstall.
+ */
+function scrape_migrate_uninstall() {
+
+  $query = \Drupal::database()->select('config', 'c')
+    ->fields('c', ['name'])
+    ->condition('name', 'migrate_plus.' . '%', 'LIKE')
+    ->execute();
+
+  $config_names = $query->fetchAll();
+
+  // Delete each config using configFactory.
+  foreach ($config_names as $config_name) {
+    \Drupal::configFactory()->getEditable($config_name->name)->delete();
+  }
+}
