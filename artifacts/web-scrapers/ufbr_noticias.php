@@ -5,7 +5,7 @@ require __DIR__ . '/../../../../../../vendor/autoload.php';
 
 $news = getNews('http://www.portal.facom.ufu.br', '/acontece/2021/08');
 
-$fp = fopen(__DIR__ . '/../scrape/ufbr_noticias.csv', 'w');
+$fp = fopen(__DIR__ . '/../scrape/ufbr-noticias.csv', 'w');
 fputcsv($fp, ['title', 'link', 'body']);
 foreach ($news as $news_item) {
   fputcsv($fp, $news_item);
